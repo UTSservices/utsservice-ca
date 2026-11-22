@@ -12,7 +12,7 @@ INDEXABLE = True
 TODAY = datetime.date.today().isoformat()
 JOBBER = 'https://clienthub.getjobber.com/client_hubs/6c2a5043-8d20-4ca8-a7c5-82753914a5b7/public/work_request/new?source=social_media'  # no longer linked
 # Web3Forms access key: get one at web3forms.com for the inbox that should receive requests
-W3F_KEY = ''
+W3F_KEY = 'f8b0cff3-5d5b-40ea-9d48-481d79aeeeb8'
 PHONE, PHONE_TEL, PHONE2, PHONE2_TEL = '647-777-7411', '+16477777411', '647-676-4408', '+16476764408'
 EMAIL = 'Admin@utsservice.ca'
 MAPS = 'https://maps.app.goo.gl/TbrvcE7bR3gVnLHUA'
