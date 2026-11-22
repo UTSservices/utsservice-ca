@@ -1,15 +1,11 @@
-<form class="planner" id="planner" aria-label="Plan a walkthrough" onsubmit="return false">
-        <p class="mono ptitle">Plan a walkthrough</p>
-        <fieldset><legend>Your building</legend><div class="chips" data-key="building" data-mode="one">
-          <button type="button" class="chipb" aria-pressed="false">Apartment or condo</button><button type="button" class="chipb" aria-pressed="false">Retail or franchise</button><button type="button" class="chipb" aria-pressed="false">Office</button><button type="button" class="chipb" aria-pressed="false">Public building</button><button type="button" class="chipb" aria-pressed="false">Something else</button>
-        </div></fieldset>
-        <fieldset><legend>Doors and entrances</legend><div class="chips" data-key="doors" data-mode="one">
-          <button type="button" class="chipb" aria-pressed="false">1 to 5</button><button type="button" class="chipb" aria-pressed="false">6 to 20</button><button type="button" class="chipb" aria-pressed="false">21 to 50</button><button type="button" class="chipb" aria-pressed="false">More than 50</button>
-        </div></fieldset>
-        <fieldset><legend>What you need (pick any)</legend><div class="chips" data-key="needs" data-mode="many">
-          <button type="button" class="chipb" aria-pressed="false">Locks and rekeys</button><button type="button" class="chipb" aria-pressed="false">Fobs and access control</button><button type="button" class="chipb" aria-pressed="false">Door repair</button><button type="button" class="chipb" aria-pressed="false">Automatic doors</button><button type="button" class="chipb" aria-pressed="false">Regular maintenance</button>
-        </div></fieldset>
-        <div class="ticket mono empty" id="ticket" aria-live="polite">Tap a few options and your request writes itself here.</div>
-        <div class="row"><a class="btn btn-primary" id="p-mail" href="mailto:Admin@utsservice.ca" aria-disabled="true">Email this to UTS</a><button type="button" class="btn btn-glass" id="p-copy" aria-disabled="true">Copy</button></div>
-        <p class="pnote">Opens your email app with the details filled in. Nothing is sent until you hit send.</p>
-      </form>
+<div class="planner reqcard" aria-label="What the request form asks">
+        <p class="mono ptitle">What the request form asks</p>
+        <ul class="reqlist">
+          <li><span class="mono">01</span>Your contact details and the building address</li>
+          <li><span class="mono">02</span>Property type and the service you need: access control, automatic doors, locksmith, storefront glass, fire-rated doors and more</li>
+          <li><span class="mono">03</span>How urgent it is, from within three hours to whenever we are available</li>
+          <li><span class="mono">04</span>Photos of the door or hardware, if you have them</li>
+        </ul>
+        <div class="row"><a class="btn btn-primary" href="https://clienthub.getjobber.com/client_hubs/6c2a5043-8d20-4ca8-a7c5-82753914a5b7/public/work_request/new?source=social_media" target="_blank" rel="noopener">Open the request form</a></div>
+        <p class="pnote">Takes about two minutes and goes straight to the UTS team. Rather talk? Call <a href="tel:+16477777411">647-777-7411</a>.</p>
+      </div>

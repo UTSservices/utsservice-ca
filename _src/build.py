@@ -7,10 +7,12 @@ Two switches matter at launch:
 """
 import os, json, html, datetime, shutil
 
-BASE = 'https://uts-service-nu.vercel.app'
-INDEXABLE = False
+BASE = 'https://www.utsservice.ca'
+INDEXABLE = True
 TODAY = datetime.date.today().isoformat()
-JOBBER = 'https://clienthub.getjobber.com/client_hubs/6c2a5043-8d20-4ca8-a7c5-82753914a5b7/public/work_request/new?source=social_media'
+JOBBER = 'https://clienthub.getjobber.com/client_hubs/6c2a5043-8d20-4ca8-a7c5-82753914a5b7/public/work_request/new?source=social_media'  # no longer linked
+# Web3Forms access key: get one at web3forms.com for the inbox that should receive requests
+W3F_KEY = ''
 PHONE, PHONE_TEL, PHONE2, PHONE2_TEL = '647-777-7411', '+16477777411', '647-676-4408', '+16476764408'
 EMAIL = 'Admin@utsservice.ca'
 MAPS = 'https://maps.app.goo.gl/TbrvcE7bR3gVnLHUA'
@@ -192,6 +194,7 @@ def crumbs_ld(trail):
 
 def shell(path, title, desc, body, ld, extra_head='', scripts=('assets/site.js',), home=False, og='assets/hero-ending.jpg'):
     depth = path.count('/'); rel = '../' * depth
+    req = '#request' if path in ('', 'contact/') else rel + 'contact/#request'
     url = BASE + '/' + path
     graph = {"@context": "https://schema.org", "@graph": ld}
     nav = ''.join('<li><a href="%s%s"%s>%s</a></li>' % (rel, p, ' aria-current="page"' if path.startswith(p) else '', n) for n, p in NAV)
@@ -234,7 +237,7 @@ def shell(path, title, desc, body, ld, extra_head='', scripts=('assets/site.js',
     <a class="logo" href="{rel or './'}" aria-label="UTS Service home"><img src="{rel}assets/uts-logo.png" alt="UTS Service" width="444" height="160"></a>
     <ul>{nav}</ul>
     <div class="nav-r">
-    <a class="btn btn-primary btn-sm cta-top" href="{JOBBER}" target="_blank" rel="noopener">Request service</a>
+    <a class="btn btn-primary btn-sm cta-top" href="{req}">Request service</a>
     <a class="btn btn-glass btn-sm call" href="tel:{PHONE_TEL}">Call</a>
     <button class="menu-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
     </div>
@@ -257,13 +260,13 @@ def shell(path, title, desc, body, ld, extra_head='', scripts=('assets/site.js',
     <div><h4>Services</h4><ul>{svc_links}<li><a href="{rel}emergency-service/">Emergency service</a></li></ul></div>
     <div><h4>Who we serve</h4><ul>{ind_links}</ul></div>
     <div><h4>Service areas</h4><ul>{area_links}</ul></div>
-    <div><h4>Company</h4><ul><li><a href="{rel}about/">About</a></li><li><a href="{rel}faq/">FAQ</a></li><li><a href="{rel}contact/">Contact</a></li><li><a href="{JOBBER}" target="_blank" rel="noopener">Request service</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="{rel}about/">About</a></li><li><a href="{rel}faq/">FAQ</a></li><li><a href="{rel}contact/">Contact</a></li><li><a href="{rel}contact/#request">Request service</a></li></ul></div>
     <p class="legal">© 2026 UTS Service. All rights reserved.</p>
   </div>
 </footer>
 <div class="sticky-call">
   <a class="btn btn-primary" href="tel:{PHONE_TEL}">Call now</a>
-  <a class="btn btn-glass" href="{JOBBER}" target="_blank" rel="noopener">Request service</a>
+  <a class="btn btn-glass" href="{req}">Request service</a>
 </div>
 {''.join('<script src="%s%s" defer></script>' % (rel, s) for s in scripts)}
 </body>
@@ -283,7 +286,7 @@ def hero(rel, trail, kicker, h1, lede, img='hero-poster.jpg'):
     <p class="kick mono in">{KICK}{e(kicker)}</p>
     <h1>{e(h1)}</h1>
     <p class="lede">{e(lede)}</p>
-    <div class="row"><a class="btn btn-primary" href="{JOBBER}" target="_blank" rel="noopener">Request service</a><a class="btn btn-glass" href="tel:{PHONE_TEL}">Call {PHONE}</a></div>
+    <div class="row"><a class="btn btn-primary" href="{rel}contact/#request">Request service</a><a class="btn btn-glass" href="tel:{PHONE_TEL}">Call {PHONE}</a></div>
   </div>
 </header>'''
 
@@ -315,7 +318,7 @@ def linkrow(rel, kicker, h2, links):
     return f'<section class="psec"><div class="wrap"><p class="kick mono reveal">{KICK}{e(kicker)}</p><h2 class="h reveal">{e(h2)}</h2><div class="lgrid">{c}</div></div></section>'
 
 def cta(rel, h2='Let us through your front door.', p="Tell us about your building and we'll get back to you the same business day."):
-    return f'''<section class="psec" id="request"><div class="wrap"><div class="em reveal"><p class="kick mono in">{KICK}Request service</p><h2>{e(h2)}</h2><p>{e(p)}</p><div class="row"><a class="btn btn-primary" href="{JOBBER}" target="_blank" rel="noopener">Request service</a><a class="btn btn-glass" href="{rel}contact/">Plan a walkthrough</a><a class="big-call" href="tel:{PHONE_TEL}">{PHONE}</a></div></div></div></section>'''
+    return f'''<section class="psec" id="request"><div class="wrap"><div class="em reveal"><p class="kick mono in">{KICK}Request service</p><h2>{e(h2)}</h2><p>{e(p)}</p><div class="row"><a class="btn btn-primary" href="{rel}contact/#request">Request service</a><a class="btn btn-glass" href="{rel}contact/">Contact details</a><a class="big-call" href="tel:{PHONE_TEL}">{PHONE}</a></div></div></div></section>'''
 
 def pic(rel, s):
     return f'<figure class="pfig reveal"><picture><source type="image/webp" srcset="{rel}assets/{s["img"]}.webp"><img src="{rel}assets/{s["img"]}.jpg" alt="{e(s["alt"])}" loading="lazy" width="1600" height="1200"></picture></figure>'
@@ -332,13 +335,13 @@ svc_blurb = {'locksmith': 'Rekeys, master keys and high-security locks', 'access
 def build():
     # shared assets
     open(os.path.join(ROOT, 'assets/site.css'), 'w', encoding='utf-8').write(rd('home.css') + '\n' + rd('inner.css'))
-    shutil.copy(os.path.join(SRC, 'home.js'), os.path.join(ROOT, 'assets/home.js'))
-    shutil.copy(os.path.join(SRC, 'site.js'), os.path.join(ROOT, 'assets/site.js'))
+    for n in ('home.js', 'site.js'):
+        open(os.path.join(ROOT, 'assets', n), 'w', encoding='utf-8').write(rd(n) + '\n' + rd('form.js'))
 
     # ---- home ----
     shell('', 'UTS Service | Locks, Access Control and Doors in the GTA',
           'Locksmith, access control, door repair and automatic doors for apartment buildings and businesses across the GTA. One team for every entrance.',
-          rd('home.body.html').replace('{{REL}}', ''),
+          rd('home.body.html').replace('{{REL}}', '').replace('{{FORM}}', rd('form.html').replace('{{W3F_KEY}}', W3F_KEY)),
           [BUSINESS, {"@type": "WebSite", "@id": BASE + "/#website", "url": BASE + "/", "name": "UTS Service", "publisher": {"@id": BASE + "/#business"}, "inLanguage": "en-CA"}, faq_ld(HOME_FAQS)],
           extra_head=rd('home.head.html'), scripts=('assets/home.js',), home=True)
 
@@ -492,20 +495,19 @@ def build():
 
     # ---- contact ----
     p = 'contact/'; T = [('Home', ''), ('Contact', p)]
-    planner = rd('planner.html')
+    planner = rd('form.html').replace('{{W3F_KEY}}', W3F_KEY)
     contact = f'''<section class="psec" id="request"><div class="wrap split2 top">
       <div class="reveal"><p class="kick mono in">{KICK}Reach us</p><h2 class="h">Call, email or send a request.</h2>
         <ul class="nap">
           <li><span class="mono">Phone</span><a href="tel:{PHONE_TEL}">{PHONE}</a> <a href="tel:{PHONE2_TEL}">{PHONE2}</a></li>
           <li><span class="mono">Email</span><a href="mailto:{EMAIL}">{EMAIL}</a></li>
           <li><span class="mono">Address</span><a href="{MAPS}" target="_blank" rel="noopener">50 Alness St, Unit 1<br>North York, ON M3J 2G9</a></li>
-          <li><span class="mono">Online</span><a href="{JOBBER}" target="_blank" rel="noopener">Open the service request form</a></li>
         </ul></div>
       {planner}
     </div></section>'''
     shell(p, 'Contact UTS Service | Request Locksmith or Door Service',
-          'Call 647-777-7411, email Admin@utsservice.ca or plan a walkthrough online. UTS Service, 50 Alness St, Unit 1, North York, ON.',
-          hero(rel, T, 'Contact', 'Let us through your front door.', "Three taps and we know what to bring. We'll get back to you the same business day.", img='hero-ending.jpg') + main(contact, faq([GENERAL_FAQS[6], GENERAL_FAQS[2], GENERAL_FAQS[3]], 'Before you reach out')),
+          'Call 647-777-7411, email Admin@utsservice.ca or send a service request online. UTS Service, 50 Alness St, Unit 1, North York, ON.',
+          hero(rel, T, 'Contact', 'Let us through your front door.', "Fill in the form and we'll get back to you the same business day.", img='hero-ending.jpg') + main(contact, faq([GENERAL_FAQS[6], GENERAL_FAQS[2], GENERAL_FAQS[3]], 'Before you reach out')),
           [crumbs_ld(T), {"@type": "ContactPage", "url": BASE + '/' + p, "about": {"@id": BASE + "/#business"}}, faq_ld([GENERAL_FAQS[6], GENERAL_FAQS[2], GENERAL_FAQS[3]])])
 
     # ---- 404 ----
@@ -531,7 +533,7 @@ def build():
     L += ['- [Building Program](%s/building-program/): One account for every lock, reader and door across a portfolio of buildings.' % BASE, '- [Emergency service](%s/emergency-service/): Building door, lock and access emergencies. Call %s.' % (BASE, PHONE), '', '## Who we serve']
     L += ['- [%s](%s/industries/%s/): %s' % (i['name'], BASE, i['slug'], i['answer']) for i in INDUSTRIES]
     L += ['', '## Service areas'] + ['- [%s](%s/service-areas/%s/): %s' % (r[1], BASE, r[0], ', '.join(r[2])) for r in REGIONS]
-    L += ['', '## Company', '- [About](%s/about/)' % BASE, '- [FAQ](%s/faq/)' % BASE, '- [Contact](%s/contact/)' % BASE, '- [Request service form](%s)' % JOBBER, '']
+    L += ['', '## Company', '- [About](%s/about/)' % BASE, '- [FAQ](%s/faq/)' % BASE, '- [Contact](%s/contact/)' % BASE, '- [Request service](%s/contact/#request)' % BASE, '']
     open(os.path.join(ROOT, 'llms.txt'), 'w', encoding='utf-8').write('\n'.join(L))
     print('built', len(out_pages), 'pages')
 

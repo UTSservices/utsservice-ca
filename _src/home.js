@@ -180,27 +180,6 @@ const links=new Map($$('.nav ul a').map(a=>[a.getAttribute('href').slice(1),a]))
 const aio=new IntersectionObserver(es=>es.forEach(e=>{const a=links.get(e.target.id);if(a)a.classList.toggle('on',e.isIntersecting)}),{rootMargin:'-45% 0px -50% 0px'});
 links.forEach((a,id)=>{const el=document.getElementById(id);if(el)aio.observe(el)});
 
-/* ---------- walkthrough planner ---------- */
-const pstate={building:'',doors:'',needs:[]}, ticket=$('#ticket'), pmail=$('#p-mail'), pcopy=$('#p-copy');
-function planText(){const L=[];if(pstate.building)L.push('Building: '+pstate.building);if(pstate.doors)L.push('Doors and entrances: '+pstate.doors);if(pstate.needs.length)L.push('Needs: '+pstate.needs.join(', '));return L}
-function planRender(){
-  const L=planText(), has=L.length>0;
-  ticket.classList.toggle('empty',!has);
-  ticket.textContent=has?'WALKTHROUGH REQUEST\n'+L.join('\n'):'Tap a few options and your request writes itself here.';
-  const body='Hi UTS,\n\nI would like to book a walkthrough.\n\n'+L.join('\n')+'\n\nName:\nBuilding address:\nBest time to reach me:\n';
-  pmail.href='mailto:Admin@utsservice.ca?subject='+encodeURIComponent('Walkthrough request')+'&body='+encodeURIComponent(body);
-  [pmail,pcopy].forEach(b=>b.setAttribute('aria-disabled',has?'false':'true'));
-  pcopy.dataset.text=body;
-}
-$$('#planner .chips').forEach(g=>g.addEventListener('click',e=>{
-  const b=e.target.closest('.chipb');if(!b)return;const key=g.dataset.key, v=b.textContent.trim();
-  if(g.dataset.mode==='one'){const was=b.getAttribute('aria-pressed')==='true';g.querySelectorAll('.chipb').forEach(x=>x.setAttribute('aria-pressed','false'));if(!was)b.setAttribute('aria-pressed','true');pstate[key]=was?'':v}
-  else{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on?'true':'false');pstate.needs=[...g.querySelectorAll('.chipb[aria-pressed="true"]')].map(x=>x.textContent.trim())}
-  planRender();
-}));
-pcopy.addEventListener('click',async()=>{const t=pcopy.dataset.text||'';try{await navigator.clipboard.writeText(t)}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(_){}ta.remove()}pcopy.textContent='Copied';setTimeout(()=>{pcopy.textContent='Copy'},1800)});
-planRender();
-
 /* reduced motion, live both ways */
 function pinToFinalStates(){if(!granted)grant();$$('.doorway,.box').forEach(d=>{d.classList.add('open','in')});$$('.reveal').forEach(r=>r.classList.add('in'))}
 function unpinFinalStates(){/* content stays revealed; scroll-driven hero re-arms through applyHeroMode */}

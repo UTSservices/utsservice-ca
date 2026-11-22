@@ -5,29 +5,29 @@
 UTS Service works for property managers, condo boards, retail and franchise operators, offices and public sector buildings. Customers are buildings and businesses, not individual homeowners.
 
 ## Services
-- [Locksmith](https://uts-service-nu.vercel.app/services/locksmith/): UTS Service is a commercial locksmith based in North York. We rekey and replace locks, build master key systems, install high-security cylinders and handle lockouts for apartment buildings, condos, stores, offices and public buildings across the GTA.
-- [Access control](https://uts-service-nu.vercel.app/services/access-control/): Access control replaces keys with credentials you can switch on and off: fobs, cards, PIN codes or fingerprints. UTS Service designs, installs and manages these systems for apartment buildings and businesses across the GTA, and takes over systems another company installed.
-- [Door repair](https://uts-service-nu.vercel.app/services/door-repair/): Most door problems come from four parts: the closer, the hinges, the strike and the frame. UTS Service repairs and replaces all of them on commercial, storefront and apartment building doors across the GTA, so the door closes, latches and locks every time.
-- [Automatic doors](https://uts-service-nu.vercel.app/services/automatic-doors/): UTS Service installs, repairs and maintains automatic doors for commercial properties and apartment buildings across the GTA. That covers sliding doors, swing door operators and push-button openers that make an entrance easier for everyone to use.
-- [Building Program](https://uts-service-nu.vercel.app/building-program/): One account for every lock, reader and door across a portfolio of buildings.
-- [Emergency service](https://uts-service-nu.vercel.app/emergency-service/): Building door, lock and access emergencies. Call 647-777-7411.
+- [Locksmith](https://www.utsservice.ca/services/locksmith/): UTS Service is a commercial locksmith based in North York. We rekey and replace locks, build master key systems, install high-security cylinders and handle lockouts for apartment buildings, condos, stores, offices and public buildings across the GTA.
+- [Access control](https://www.utsservice.ca/services/access-control/): Access control replaces keys with credentials you can switch on and off: fobs, cards, PIN codes or fingerprints. UTS Service designs, installs and manages these systems for apartment buildings and businesses across the GTA, and takes over systems another company installed.
+- [Door repair](https://www.utsservice.ca/services/door-repair/): Most door problems come from four parts: the closer, the hinges, the strike and the frame. UTS Service repairs and replaces all of them on commercial, storefront and apartment building doors across the GTA, so the door closes, latches and locks every time.
+- [Automatic doors](https://www.utsservice.ca/services/automatic-doors/): UTS Service installs, repairs and maintains automatic doors for commercial properties and apartment buildings across the GTA. That covers sliding doors, swing door operators and push-button openers that make an entrance easier for everyone to use.
+- [Building Program](https://www.utsservice.ca/building-program/): One account for every lock, reader and door across a portfolio of buildings.
+- [Emergency service](https://www.utsservice.ca/emergency-service/): Building door, lock and access emergencies. Call 647-777-7411.
 
 ## Who we serve
-- [Apartments and condos](https://uts-service-nu.vercel.app/industries/apartments-condos/): UTS Service looks after the entrances of apartment and condo buildings across the GTA: fob and intercom systems, lobby and automatic doors, garage entrances, unit rekeys at move-out, and master key systems for property managers and condo boards.
-- [Retail and franchise](https://uts-service-nu.vercel.app/industries/retail-franchise/): UTS Service keeps storefront doors and locks working for retailers and franchise operators across the GTA. We repair and replace storefront locks, closers and panic bars, rekey after staff changes, and apply the same hardware standard at every location.
-- [Offices and corporate](https://uts-service-nu.vercel.app/industries/offices/): UTS Service sets up and manages access for offices across the GTA: card and fob entry by floor or department, master key systems for the rooms that still use keys, and entry records that show who came in and when.
-- [Public sector](https://uts-service-nu.vercel.app/industries/public-sector/): UTS Service installs and maintains locks, access control and automatic doors in public buildings across the GTA. We use code-compliant hardware, keep entrances accessible, and work around the people who use the building every day.
+- [Apartments and condos](https://www.utsservice.ca/industries/apartments-condos/): UTS Service looks after the entrances of apartment and condo buildings across the GTA: fob and intercom systems, lobby and automatic doors, garage entrances, unit rekeys at move-out, and master key systems for property managers and condo boards.
+- [Retail and franchise](https://www.utsservice.ca/industries/retail-franchise/): UTS Service keeps storefront doors and locks working for retailers and franchise operators across the GTA. We repair and replace storefront locks, closers and panic bars, rekey after staff changes, and apply the same hardware standard at every location.
+- [Offices and corporate](https://www.utsservice.ca/industries/offices/): UTS Service sets up and manages access for offices across the GTA: card and fob entry by floor or department, master key systems for the rooms that still use keys, and entry records that show who came in and when.
+- [Public sector](https://www.utsservice.ca/industries/public-sector/): UTS Service installs and maintains locks, access control and automatic doors in public buildings across the GTA. We use code-compliant hardware, keep entrances accessible, and work around the people who use the building every day.
 
 ## Service areas
-- [Toronto](https://uts-service-nu.vercel.app/service-areas/toronto/): Toronto, North York, Scarborough, Etobicoke
-- [Peel Region](https://uts-service-nu.vercel.app/service-areas/peel/): Brampton, Mississauga, Caledon
-- [York Region](https://uts-service-nu.vercel.app/service-areas/york/): Vaughan, Markham, Richmond Hill, Aurora, Newmarket, East Gwillimbury, Georgina, King, Whitchurch-Stouffville
-- [Durham Region](https://uts-service-nu.vercel.app/service-areas/durham/): Pickering, Ajax, Whitby, Oshawa, Clarington, Uxbridge, Scugog, Brock
-- [Halton Region](https://uts-service-nu.vercel.app/service-areas/halton/): Burlington, Oakville, Milton, Halton Hills
-- [Beyond the GTA](https://uts-service-nu.vercel.app/service-areas/southern-ontario/): Hamilton, Barrie, Guelph, Cambridge, Kitchener, Waterloo, St. Catharines, Niagara Falls, Brantford
+- [Toronto](https://www.utsservice.ca/service-areas/toronto/): Toronto, North York, Scarborough, Etobicoke
+- [Peel Region](https://www.utsservice.ca/service-areas/peel/): Brampton, Mississauga, Caledon
+- [York Region](https://www.utsservice.ca/service-areas/york/): Vaughan, Markham, Richmond Hill, Aurora, Newmarket, East Gwillimbury, Georgina, King, Whitchurch-Stouffville
+- [Durham Region](https://www.utsservice.ca/service-areas/durham/): Pickering, Ajax, Whitby, Oshawa, Clarington, Uxbridge, Scugog, Brock
+- [Halton Region](https://www.utsservice.ca/service-areas/halton/): Burlington, Oakville, Milton, Halton Hills
+- [Beyond the GTA](https://www.utsservice.ca/service-areas/southern-ontario/): Hamilton, Barrie, Guelph, Cambridge, Kitchener, Waterloo, St. Catharines, Niagara Falls, Brantford
 
 ## Company
-- [About](https://uts-service-nu.vercel.app/about/)
-- [FAQ](https://uts-service-nu.vercel.app/faq/)
-- [Contact](https://uts-service-nu.vercel.app/contact/)
-- [Request service form](https://clienthub.getjobber.com/client_hubs/6c2a5043-8d20-4ca8-a7c5-82753914a5b7/public/work_request/new?source=social_media)
+- [About](https://www.utsservice.ca/about/)
+- [FAQ](https://www.utsservice.ca/faq/)
+- [Contact](https://www.utsservice.ca/contact/)
+- [Request service](https://www.utsservice.ca/contact/#request)

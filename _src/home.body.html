@@ -20,7 +20,7 @@
         <h2 class="split" data-fx="part">Doors that just work.</h2>
         <p class="sub">One team for every lock, reader and door in your building.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="https://clienthub.getjobber.com/client_hubs/6c2a5043-8d20-4ca8-a7c5-82753914a5b7/public/work_request/new?source=social_media" target="_blank" rel="noopener">Request service</a>
+          <a class="btn btn-primary" href="#request">Request service</a>
           <a class="btn btn-glass" href="#request">Book a walkthrough</a>
         </div>
       </div>
@@ -39,7 +39,7 @@
       <h1>Every entrance. Handled.</h1>
       <p>Locks, access control and automatic doors for apartment buildings and businesses across the GTA.</p>
       <div class="ctas">
-        <a class="btn btn-primary" href="https://clienthub.getjobber.com/client_hubs/6c2a5043-8d20-4ca8-a7c5-82753914a5b7/public/work_request/new?source=social_media" target="_blank" rel="noopener">Request service</a>
+        <a class="btn btn-primary" href="#request">Request service</a>
         <a class="btn btn-glass" href="tel:+16477777411">Call 647-777-7411</a>
       </div>
     </div>
@@ -189,27 +189,13 @@
       <div class="inner">
         <p class="kick mono"><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 19V1h14v18M19 19V1h14v18"/></svg>Request service</p>
         <h2>Let us through your front door.</h2>
-        <p>Three taps and we know what to bring. We'll get back to you the same business day.</p>
+        <p>Tell us what you need and we'll get back to you the same business day.</p>
         <div class="row">
-          <a class="btn btn-primary" href="https://clienthub.getjobber.com/client_hubs/6c2a5043-8d20-4ca8-a7c5-82753914a5b7/public/work_request/new?source=social_media" target="_blank" rel="noopener">Request service</a>
+          <a class="btn btn-primary" href="#request">Request service</a>
           <a class="btn btn-glass" href="tel:+16477777411">Call 647-777-7411</a>
         </div>
       </div>
-      <form class="planner" id="planner" aria-label="Plan a walkthrough" onsubmit="return false">
-        <p class="mono ptitle">Plan a walkthrough</p>
-        <fieldset><legend>Your building</legend><div class="chips" data-key="building" data-mode="one">
-          <button type="button" class="chipb" aria-pressed="false">Apartment or condo</button><button type="button" class="chipb" aria-pressed="false">Retail or franchise</button><button type="button" class="chipb" aria-pressed="false">Office</button><button type="button" class="chipb" aria-pressed="false">Public building</button><button type="button" class="chipb" aria-pressed="false">Something else</button>
-        </div></fieldset>
-        <fieldset><legend>Doors and entrances</legend><div class="chips" data-key="doors" data-mode="one">
-          <button type="button" class="chipb" aria-pressed="false">1 to 5</button><button type="button" class="chipb" aria-pressed="false">6 to 20</button><button type="button" class="chipb" aria-pressed="false">21 to 50</button><button type="button" class="chipb" aria-pressed="false">More than 50</button>
-        </div></fieldset>
-        <fieldset><legend>What you need (pick any)</legend><div class="chips" data-key="needs" data-mode="many">
-          <button type="button" class="chipb" aria-pressed="false">Locks and rekeys</button><button type="button" class="chipb" aria-pressed="false">Fobs and access control</button><button type="button" class="chipb" aria-pressed="false">Door repair</button><button type="button" class="chipb" aria-pressed="false">Automatic doors</button><button type="button" class="chipb" aria-pressed="false">Regular maintenance</button>
-        </div></fieldset>
-        <div class="ticket mono empty" id="ticket" aria-live="polite">Tap a few options and your request writes itself here.</div>
-        <div class="row"><a class="btn btn-primary" id="p-mail" href="mailto:Admin@utsservice.ca" aria-disabled="true">Email this to UTS</a><button type="button" class="btn btn-glass" id="p-copy" aria-disabled="true">Copy</button></div>
-        <p class="pnote">Opens your email app with the details filled in. Nothing is sent until you hit send.</p>
-      </form>
+      {{FORM}}
     </div>
   </div>
 </section>
