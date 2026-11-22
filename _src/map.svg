@@ -1,0 +1,17 @@
+<svg class="map reveal" viewBox="0 0 500 500" aria-hidden="true">
+      <path class="ln" d="M40 380 C140 360 220 395 300 372 S430 330 470 336"/>
+      <path class="ln" d="M60 120 H460 M60 200 H460 M60 280 H460 M120 60 V440 M220 60 V440 M320 60 V440 M420 60 V440" stroke-dasharray="2 6"/>
+      <path class="rd" d="M250 230 L190 270 L120 320 M250 230 L330 220 L410 250 M250 230 L240 150 L230 90 M250 230 L300 300 M250 230 L160 210 L90 250 M250 230 L320 150 M250 230 L440 300"/>
+      <circle class="halo" cx="250" cy="230" r="10" stroke-width="1.5"/>
+      <circle class="hq" cx="250" cy="230" r="6"/><text x="262" y="226">North York</text>
+      <circle class="pt" cx="300" cy="300" r="3.5"/><text x="310" y="304">Toronto</text>
+      <circle class="pt" cx="190" cy="270" r="3.5"/><text x="120" y="290">Etobicoke</text>
+      <circle class="pt" cx="120" cy="320" r="3.5"/><text x="40" y="340">Mississauga</text>
+      <circle class="pt" cx="410" cy="250" r="3.5"/><text x="390" y="235">Scarborough</text>
+      <circle class="pt" cx="230" cy="90" r="3.5"/><text x="242" y="94">Richmond Hill</text>
+      <circle class="pt" cx="160" cy="210" r="3.5"/><text x="96" y="200">Vaughan</text>
+      <circle class="pt" cx="320" cy="150" r="3.5"/><text x="332" y="154">Markham</text>
+      <circle class="pt" cx="90" cy="250" r="3.5"/><text x="40" y="240">Brampton</text>
+      <circle class="pt" cx="440" cy="300" r="3.5"/><text x="420" y="320">Pickering</text>
+      <text x="56" y="420">Lake Ontario</text>
+    </svg>

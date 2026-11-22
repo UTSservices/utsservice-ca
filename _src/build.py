@@ -421,7 +421,7 @@ def build():
           'UTS Service covers Toronto, Peel, York, Durham and Halton regions, plus Hamilton, Niagara, Kitchener-Waterloo, Guelph, Brantford and Barrie.',
           hero(rel, T, 'Coverage', 'Across the GTA and well beyond it.', 'Based in North York. Working in %d cities and towns across southern Ontario.' % len(ALL_CITIES)) + main(
               answer('UTS Service is based at 50 Alness St in North York and works across Toronto, Peel, York, Durham and Halton regions. We also travel to Hamilton, Niagara, Kitchener-Waterloo, Guelph, Brantford and Barrie.'),
-              '<section class="psec"><div class="wrap"><p class="kick mono reveal">%sBy region</p><h2 class="h reveal">Every place we work.</h2><div class="regions">%s</div></div></section>' % (KICK, groups),
+              '<section class="psec"><div class="wrap cov"><div><p class="kick mono reveal">%sBy region</p><h2 class="h reveal">Every place we work.</h2><div class="regions">%s</div></div>%s</div></section>' % (KICK, groups, rd('map.svg')),
               faq(area_faqs), cta(rel)),
           [crumbs_ld(T), faq_ld(area_faqs)])
     rel = '../../'
