@@ -37,6 +37,40 @@ REGIONS = [
 ]
 ALL_CITIES = [c for r in REGIONS for c in r[2]]
 
+# Unique copy for each region page: the kinds of buildings found there and what usually goes wrong with their doors.
+REGION_COPY = {
+ 'toronto': ("Toronto runs on towers, storefronts and lobbies. Rental and condo high-rises need fob systems that keep up with move-ins and move-outs. Downtown and midtown offices need card access by floor. Main-street shops and mall units need storefront locks and closers that survive thousands of openings a week.",
+   [('High-rise apartments and condos', 'Fob and intercom systems, lobby doors, garage entrances and unit rekeys between tenants.'),
+    ('Offices and towers', 'Card access by floor, master key systems for back-of-house rooms, and entry records.'),
+    ('Storefronts and malls', 'Aluminum and glass storefront doors, panic bars and locks that close properly at night.'),
+    ('Public and institutional buildings', 'Code-compliant exit hardware and accessible entrances in buildings that stay open while we work.')]),
+ 'peel': ("Peel mixes dense condo towers in Mississauga with warehouses and industrial units around Pearson and plazas across Brampton and Caledon. Heavy doors, shipping areas and shared entrances take a beating, and multi-unit buildings need tight control over who has keys and fobs.",
+   [('Warehouses and industrial units', 'Steel doors, closers and hinges rated for heavy use, plus locks on shipping and staff doors.'),
+    ('Condos and rental buildings', 'Fob systems, lobby doors and move-out rekeys for property managers.'),
+    ('Plazas and retail units', 'Storefront locks, panic bars and door repairs for tenants and landlords.'),
+    ('Offices and business parks', 'Card and fob access, master keys and automatic doors at main entrances.')]),
+ 'york': ("York Region has some of the newest buildings in the GTA: condo towers and townhouse communities in Vaughan, Markham and Richmond Hill, business parks along Highway 7 and the 404, and plazas in every town up to Georgina. New buildings still need their access systems managed and their doors kept adjusted as they settle.",
+   [('New condo and townhouse communities', 'Fob and intercom management, lobby and garage doors, and master key systems.'),
+    ('Business parks and offices', 'Card access by suite or floor, entry records and master keys.'),
+    ('Plazas and retail', 'Storefront doors, locks and closers, and rekeys after staff changes.'),
+    ('Municipal and community buildings', 'Accessible entrances and code-compliant exit hardware.')]),
+ 'durham': ("Durham covers lakeshore cities like Pickering, Ajax, Whitby and Oshawa and rural townships up to Brock. Rental apartment buildings, plazas, schools, offices and municipal buildings all depend on entrances that lock, open and close the way they should.",
+   [('Rental apartment buildings', 'Unit rekeys, fob systems, lobby doors and master keys for landlords and managers.'),
+    ('Plazas and storefronts', 'Storefront locks, closers and panic bars for tenants and property owners.'),
+    ('Offices and industrial sites', 'Access control, steel door repair and high-security locks.'),
+    ('Public buildings', 'Accessible push-button entrances and exit hardware that meets code.')]),
+ 'halton': ("Halton runs from lakeside condos and offices in Oakville and Burlington to fast-growing Milton and the industrial parks of Halton Hills. Busy entrances, office suites and shared buildings all need locks, readers and doors that one team keeps track of.",
+   [('Offices and corporate sites', 'Card and fob access, master key systems and entry records.'),
+    ('Condos and apartment buildings', 'Fob management, intercoms, lobby doors and unit rekeys.'),
+    ('Industrial and warehouse units', 'Heavy-duty doors, closers and locks on staff and shipping doors.'),
+    ('Retail and plazas', 'Storefront doors, panic bars and automatic entrances.')]),
+ 'southern-ontario': ("Beyond the GTA we mostly work for property managers and brands with several sites, such as franchise locations, retail chains and buildings in a portfolio, who want one team and one standard across every location in Hamilton, Niagara, Kitchener-Waterloo, Guelph, Brantford and Barrie.",
+   [('Franchise and retail chains', 'The same locks, hardware and standards at every location.'),
+    ('Property portfolios', 'Access control and master keys planned across several buildings.'),
+    ('Offices and commercial buildings', 'Card access, door repair and automatic doors.'),
+    ('Planned visits', 'Work grouped into scheduled trips so every site gets covered.')]),
+}
+
 SERVICES = [
  dict(slug='locksmith', name='Locksmith', img='svc-locksmith', alt='Brushed steel lock and lever on a dark commercial door',
   title='Commercial Locksmith in Toronto and the GTA | UTS Service',
@@ -110,7 +144,7 @@ SERVICES = [
 ]
 
 INDUSTRIES = [
- dict(slug='apartments-condos', name='Apartments and condos', title='Locks, Fobs and Doors for Apartments and Condos | UTS Service',
+ dict(slug='apartments-condos', name='Apartments and condos', title='Locks, Fobs and Doors for Apartments & Condos | UTS Service',
   desc='Fob systems, lobby doors, unit rekeys and master keys for apartment and condo buildings across the GTA. One team for property managers and condo boards.',
   h1='Locks, fobs and doors for apartments and condos',
   lede='Fobs, intercoms, lobby doors and move-out rekeys, handled for your whole portfolio.',
@@ -221,7 +255,9 @@ def shell(path, title, desc, body, ld, extra_head='', scripts=('assets/site.js',
 <meta property="og:image" content="{BASE}/{og}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="apple-touch-icon" href="{rel}assets/apple-touch-icon.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F1626'/%3E%3Crect x='14' y='12' width='16' height='40' rx='2' fill='none' stroke='%23EEF2F9' stroke-width='3'/%3E%3Crect x='34' y='12' width='16' height='40' rx='2' fill='none' stroke='%23EEF2F9' stroke-width='3'/%3E%3Ccircle cx='46' cy='32' r='3' fill='%234FA6FF'/%3E%3C/svg%3E">
+<link rel="icon" href="{rel}favicon.ico" sizes="48x48">
+<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add('js')</script>
 {extra_head}
 <script type="application/ld+json">{json.dumps(graph, separators=(',', ':'), ensure_ascii=False)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -392,14 +428,15 @@ def build():
 
     # ---- industries ----
     rel = '../'; T = [('Home', ''), ('Industries', 'industries/')]
+    ind_faqs = [('Do you work for homeowners?', 'No. UTS Service works for buildings and businesses: apartment and condo buildings, retail and franchise locations, offices and public buildings.'), GENERAL_FAQS[1], GENERAL_FAQS[4], GENERAL_FAQS[3]]
     shell('industries/', 'Who We Serve: Buildings and Businesses | UTS Service',
           'Locks, access control and doors for apartment and condo buildings, retail and franchise locations, offices and public buildings across the GTA.',
           hero(rel, T, 'Who we serve', 'Built for buildings, not one-off calls.', 'Property managers, retailers, offices and public buildings across the GTA.') + main(
               answer('UTS Service works for the people responsible for buildings: property managers and condo boards, retail and franchise operators, office and facility managers, and public sector teams. Every customer is a building or a business, and most have more than one site.'),
               cards('By building type', 'Find your kind of building.', [(i['name'], i['lede'], 'industries/%s/' % i['slug']) for i in INDUSTRIES], cols=2, rel=rel),
               linkrow(rel, 'For portfolios', 'More than one building?', [('Building Program', 'building-program/', 'One account for every door'), ('Services', 'services/', 'The four trades we cover'), ('Service areas', 'service-areas/', 'Where we work')]),
-              cta(rel)),
-          [crumbs_ld(T)])
+              steps(rel), faq(ind_faqs), cta(rel)),
+          [crumbs_ld(T), faq_ld(ind_faqs)])
     rel = '../../'
     for i in INDUSTRIES:
         p = 'industries/%s/' % i['slug']; T = [('Home', ''), ('Industries', 'industries/'), (i['name'], p)]
@@ -422,7 +459,8 @@ def build():
           hero(rel, T, 'Coverage', 'Across the GTA and well beyond it.', 'Based in North York. Working in %d cities and towns across southern Ontario.' % len(ALL_CITIES)) + main(
               answer('UTS Service is based at 50 Alness St in North York and works across Toronto, Peel, York, Durham and Halton regions. We also travel to Hamilton, Niagara, Kitchener-Waterloo, Guelph, Brantford and Barrie.'),
               '<section class="psec"><div class="wrap cov"><div><p class="kick mono reveal">%sBy region</p><h2 class="h reveal">Every place we work.</h2><div class="regions">%s</div></div>%s</div></section>' % (KICK, groups, rd('map.svg')),
-              faq(area_faqs), cta(rel)),
+              cards('Regions', 'Pick your region for the details.', [(r[1], r[3], 'service-areas/%s/' % r[0]) for r in REGIONS], cols=3, rel=rel),
+              steps(rel), faq(area_faqs), cta(rel)),
           [crumbs_ld(T), faq_ld(area_faqs)])
     rel = '../../'
     for slug, name, cities, blurb in REGIONS:
@@ -432,6 +470,8 @@ def build():
         h1 = 'Commercial locksmith and access control ' + ('beyond the GTA' if slug == 'southern-ontario' else 'in ' + name)
         qas = [('Does UTS Service work %s?' % where, 'Yes. We work in %s.' % clist),
                ('What do you do %s?' % where, 'The same four trades we do everywhere: locksmith work, access control, door repair and automatic doors, for apartment buildings and businesses.'),
+               ('Can one account cover all our buildings %s?' % where, 'Yes. Property managers and brands with several sites can put every building on one account through our Building Program, with one team and one record of the locks, keys and fobs at each site.'),
+               ('Do you handle door emergencies %s?' % where, "Yes. Call %s. Building emergencies go to the front of our queue, and we'll give you a real arrival time on the phone." % PHONE),
                ('How do I book a visit?', 'Use the online request form, email %s, or call %s.' % (EMAIL, PHONE))]
         chips = '<section class="psec"><div class="wrap"><p class="kick mono reveal">%sCities and towns</p><h2 class="h reveal">Where we work %s.</h2><ul class="cities big reveal">%s</ul></div></section>' % (KICK, where, ''.join('<li>%s</li>' % e(c) for c in cities))
         others = [(r[1], 'service-areas/%s/' % r[0], ', '.join(r[2][:3]) + (' and more' if len(r[2]) > 3 else '')) for r in REGIONS if r[0] != slug]
@@ -441,7 +481,10 @@ def build():
               hero(rel, T, name, h1, blurb) + main(
                   answer('Yes, UTS Service works %s. We cover %s, handling locksmith work, access control, door repair and automatic doors for apartment buildings and businesses.' % (where, clist)),
                   chips,
+                  '<section class="psec"><div class="wrap"><p class="kick mono reveal">%sThe buildings</p><h2 class="h reveal">What we see %s.</h2><p class="lede reveal">%s</p></div></section>' % (KICK, where, e(REGION_COPY[slug][0])),
+                  cards('What we handle', 'Common work %s.' % where, REGION_COPY[slug][1], cols=2),
                   linkrow(rel, 'Services', 'What we do %s.' % where, [(s['name'], 'services/%s/' % s['slug'], svc_blurb[s['slug']]) for s in SERVICES]),
+                  steps(rel),
                   faq(qas),
                   linkrow(rel, 'Other areas', 'We also work in these regions.', others),
                   cta(rel)),
@@ -478,7 +521,9 @@ def build():
                   ('Quality', 'We use security products that meet industry standards.'),
                   ('Innovation', 'We keep improving how we work and what we install.')], cols=2),
               '<section class="psec"><div class="wrap"><p class="kick mono reveal">%sOur mission</p><h2 class="h reveal">Protect businesses. Give people peace of mind.</h2><p class="lede reveal">Our mission is to deliver reliable, high-quality security that protects businesses, with skilled people and proven hardware matched to what each customer needs.</p><p class="pnote2 reveal">%s</p></div></section>' % (KICK, e("Names we've worked for include Tim Hortons, Amazon, RBC, the City of Toronto, the Ontario Provincial Police, CF Toronto Eaton Centre, Louis Vuitton, Mercedes-Benz, Canada Post, UPS, WeWork, SmartCentres, Domino's Pizza, Pizza Pizza and Fred Victor.")),
-              linkrow(rel, 'Explore', 'What we do and where.', [('Services', 'services/', 'The four trades we cover'), ('Building Program', 'building-program/', 'One account for every door'), ('Service areas', 'service-areas/', 'Where we work'), ('Contact', 'contact/', 'Phone, email and address')]),
+              cards('What we do', 'Four trades, one crew.', [(s['name'], s['lede'], 'services/%s/' % s['slug']) for s in SERVICES], cols=2, rel=rel),
+              linkrow(rel, 'Who we work for', 'Buildings and businesses, not one-off calls.', [(i['name'], 'industries/%s/' % i['slug'], i['lede']) for i in INDUSTRIES]),
+              linkrow(rel, 'Explore', 'What we do and where.', [('Building Program', 'building-program/', 'One account for every door'), ('Service areas', 'service-areas/', 'Where we work'), ('FAQ', 'faq/', 'Plain answers'), ('Contact', 'contact/', 'Phone, email and address')]),
               cta(rel)),
           [crumbs_ld(T), {"@type": "AboutPage", "url": BASE + '/' + p, "about": {"@id": BASE + "/#business"}}])
 
@@ -507,14 +552,15 @@ def build():
     </div></section>'''
     shell(p, 'Contact UTS Service | Request Locksmith or Door Service',
           'Call 647-777-7411, email Admin@utsservice.ca or send a service request online. UTS Service, 50 Alness St, Unit 1, North York, ON.',
-          hero(rel, T, 'Contact', 'Let us through your front door.', "Fill in the form and we'll get back to you the same business day.", img='hero-ending.jpg') + main(contact, faq([GENERAL_FAQS[6], GENERAL_FAQS[2], GENERAL_FAQS[3]], 'Before you reach out')),
-          [crumbs_ld(T), {"@type": "ContactPage", "url": BASE + '/' + p, "about": {"@id": BASE + "/#business"}}, faq_ld([GENERAL_FAQS[6], GENERAL_FAQS[2], GENERAL_FAQS[3]])])
+          hero(rel, T, 'Contact', 'Let us through your front door.', "Fill in the form and we'll get back to you the same business day.", img='hero-ending.jpg') + main(contact, steps(rel), faq([GENERAL_FAQS[6], GENERAL_FAQS[2], GENERAL_FAQS[3], GENERAL_FAQS[5], ('What should I put in the request?', 'Your name and phone number, the building address, the kind of property, which doors or systems need work and how urgent it is. The more detail you give, the better we can prepare before we arrive.')], 'Before you reach out')),
+          [crumbs_ld(T), {"@type": "ContactPage", "url": BASE + '/' + p, "about": {"@id": BASE + "/#business"}}, faq_ld([GENERAL_FAQS[6], GENERAL_FAQS[2], GENERAL_FAQS[3], GENERAL_FAQS[5], ('What should I put in the request?', 'Your name and phone number, the building address, the kind of property, which doors or systems need work and how urgent it is. The more detail you give, the better we can prepare before we arrive.')])])
 
     # ---- 404 ----
     body404 = f'<main id="main" tabindex="-1"><section class="psec p404"><div class="wrap"><p class="kick mono in">{KICK}404</p><h1>This door is locked.</h1><p class="lede">The page you were looking for is not here.</p><div class="row"><a class="btn btn-primary" href="{BASE}/">Back to the front entrance</a><a class="btn btn-glass" href="{BASE}/services/">Services</a></div></div></section></main>'
     out_pages = list(pages)
     shell('404', 'Page not found | UTS Service', 'This page does not exist.', body404, [])
     s404 = open(os.path.join(ROOT, '404.html'), encoding='utf-8').read()
+    s404 = s404.replace('href="favicon.', 'href="%s/favicon.' % BASE)
     for a in ('href="assets/', 'src="assets/'):
         s404 = s404.replace(a, a.split('"')[0] + '"' + BASE + '/assets/')
     for n, pth in NAV: s404 = s404.replace('href="%s"' % pth, 'href="%s/%s"' % (BASE, pth))

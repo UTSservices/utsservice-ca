@@ -107,8 +107,8 @@ html.hs .stage{position:relative;height:100svh;min-height:560px;background:url(h
 html.hs .stage video,html.hs .bands,html.hs .loader,html.hs .chip,html.hs .poster,html.hs .rail{display:none!important}
 html.hs .scrim{background:linear-gradient(180deg,rgba(8,12,22,.55) 0%,rgba(8,12,22,.25) 35%,rgba(8,12,22,.85) 78%,var(--canvas) 100%)}
 html.hs .static-hero{display:block;position:absolute;left:24px;right:24px;bottom:9svh;text-shadow:var(--tshadow)}
-html.hs .static-hero h1{font-family:var(--display);font-stretch:125%;font-weight:600;font-size:clamp(34px,9vw,54px);line-height:1.02}
-html.hs .static-hero p{margin:16px 0 26px;color:#DCE3F0;max-width:34ch}
+html.hs .static-hero .sh-title{font-family:var(--display);font-stretch:125%;font-weight:600;font-size:clamp(34px,9vw,54px);line-height:1.02}
+html.hs .static-hero p:not(.sh-title){margin:16px 0 26px;color:#DCE3F0;max-width:34ch}
 html.hs .static-hero .ctas{display:flex;gap:10px;flex-wrap:wrap}
 @media (orientation: portrait) and (max-width: 1024px){html.hs .stage{background-image:url(hero-ending-m.jpg)}}
 /* phone and portrait tablet: scrolling hero with the portrait cut */
@@ -139,7 +139,7 @@ section{position:relative}
 .in .kick path,.kick.in path{stroke-dashoffset:0}
 h2.h{font-family:var(--display);font-stretch:125%;font-weight:600;font-size:clamp(32px,4.2vw,58px);line-height:1.04;letter-spacing:-.01em;max-width:18ch}
 .lede{color:var(--text-secondary);font-size:clamp(17px,1.4vw,20px);max-width:56ch;margin-top:20px}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease-out),transform 1s var(--ease-out)}
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease-out),transform 1s var(--ease-out)}
 .in .reveal,.reveal.in{opacity:1;transform:none}
 .in .reveal:nth-child(2){transition-delay:.08s}.in .reveal:nth-child(3){transition-delay:.16s}.in .reveal:nth-child(4){transition-delay:.24s}
 
