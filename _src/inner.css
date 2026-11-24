@@ -96,3 +96,13 @@ footer .wrap.fwrap{grid-template-columns:1.5fr repeat(4,1fr);gap:34px}
 .reqform [data-status] a,.reqform .pnote a{color:var(--text-primary)}
 .sent-h{font-family:var(--display);font-stretch:125%;font-weight:600;font-size:26px;margin:10px 0 8px}
 @media (max-width:520px){.fgrid{grid-template-columns:1fr}}
+
+/* AEO: question in answer box, fact sheet, updated date */
+.answer .aq{font-family:var(--display);font-stretch:125%;font-weight:600;font-size:clamp(20px,2vw,26px);line-height:1.2;margin:0 0 12px;color:var(--text-primary)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:36px;border-top:1px solid var(--glass-edge)}
+.facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--glass-edge)}
+.facts dt{color:var(--text-secondary);padding-top:3px}
+.facts dd{margin:0;color:var(--text-primary)}
+.facts a{color:var(--text-primary)}
+footer .upd{opacity:.8}
+@media (max-width:900px){.facts{grid-template-columns:1fr}.facts div{grid-template-columns:120px 1fr}}

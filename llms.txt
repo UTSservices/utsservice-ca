@@ -27,6 +27,7 @@ UTS Service works for property managers, condo boards, retail and franchise oper
 - [Beyond the GTA](https://www.utsservice.ca/service-areas/southern-ontario/): Hamilton, Barrie, Guelph, Cambridge, Kitchener, Waterloo, St. Catharines, Niagara Falls, Brantford
 
 ## Company
+- [Full reference with every question and answer](https://www.utsservice.ca/llms-full.txt)
 - [About](https://www.utsservice.ca/about/)
 - [FAQ](https://www.utsservice.ca/faq/)
 - [Contact](https://www.utsservice.ca/contact/)
